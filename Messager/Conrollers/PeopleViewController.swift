@@ -10,9 +10,10 @@ import FirebaseAuth
 
 class PeopleViewController: UIViewController {
     
-    let users: [MessageUser] = [] //Bundle.main.decode([MessageUser].self, from: "user.json")
+    let users: [MessageUser] = [] 
     var collectionView : UICollectionView!
     var dataSourse: UICollectionViewDiffableDataSource<Section, MessageUser>?
+    private let currentUser: MessageUser
     
     enum Section: Int, CaseIterable {
         case users
@@ -24,7 +25,16 @@ class PeopleViewController: UIViewController {
         }
     }
 
-
+    init(currentUser: MessageUser) {
+        self.currentUser = currentUser
+        super.init(nibName: nil, bundle: nil)
+        title = currentUser.username
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white

@@ -10,13 +10,26 @@ import UIKit
 // main Tab bar controller with two screens: ListViewController, PeopleViewController
 class MainTabBarController: UITabBarController {
     
+    
 // variables
-    let listViewController = ListViewController()
-    let peopleViewController = PeopleViewController()
+    private let currentUser: MessageUser
+    
+    
+    init(currentUser: MessageUser = MessageUser(username: "", email: "", description: "", avatarStringURL: "", sex: "", id: "")) {
+        self.currentUser = currentUser
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
 // view did load
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let listViewController = ListViewController(currentUser: currentUser)
+        let peopleViewController = PeopleViewController(currentUser: currentUser)
 
         tabBar.tintColor = .magenta
         let boldConfig = UIImage.SymbolConfiguration(weight: .medium)
