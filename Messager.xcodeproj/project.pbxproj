@@ -16,6 +16,8 @@
 		D529B003274AA8CA004468C4 /* AuthNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D529B002274AA8CA004468C4 /* AuthNavigationDelegate.swift */; };
 		D529B005274AAB09004468C4 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D529B004274AAB09004468C4 /* FirestoreService.swift */; };
 		D529B007274AB064004468C4 /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D529B006274AB064004468C4 /* UserError.swift */; };
+		D53EB10C2762AB8F00871B04 /* StorageServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53EB10B2762AB8F00871B04 /* StorageServices.swift */; };
+		D53EB10E2763F07400871B04 /* UIImageExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53EB10D2763F07400871B04 /* UIImageExtention.swift */; };
 		D54081FC2730769500B9DED9 /* Label+ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54081FB2730769500B9DED9 /* Label+ButtonView.swift */; };
 		D54081FE27307D9700B9DED9 /* StackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54081FD27307D9700B9DED9 /* StackViewExtension.swift */; };
 		D540820027308CA100B9DED9 /* SighUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54081FF27308CA100B9DED9 /* SighUpViewController.swift */; };
@@ -65,6 +67,8 @@
 		D529B002274AA8CA004468C4 /* AuthNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNavigationDelegate.swift; sourceTree = "<group>"; };
 		D529B004274AAB09004468C4 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		D529B006274AB064004468C4 /* UserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserError.swift; sourceTree = "<group>"; };
+		D53EB10B2762AB8F00871B04 /* StorageServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServices.swift; sourceTree = "<group>"; };
+		D53EB10D2763F07400871B04 /* UIImageExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtention.swift; sourceTree = "<group>"; };
 		D54081FB2730769500B9DED9 /* Label+ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+ButtonView.swift"; sourceTree = "<group>"; };
 		D54081FD27307D9700B9DED9 /* StackViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewExtension.swift; sourceTree = "<group>"; };
 		D54081FF27308CA100B9DED9 /* SighUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SighUpViewController.swift; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 				D5F39AA127371D8F00A1277F /* SegmentedControlExtension.swift */,
 				D5B93D4B2745912D0087FED5 /* ViewControllerExtension.swift */,
 				D5F39AB6273AE95800A1277F /* GradientView.swift */,
+				D53EB10D2763F07400871B04 /* UIImageExtention.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 			children = (
 				D56F1E842749350200915F0F /* AuthServices.swift */,
 				D529B004274AAB09004468C4 /* FirestoreService.swift */,
+				D53EB10B2762AB8F00871B04 /* StorageServices.swift */,
 				D529B000274A9C9E004468C4 /* Helpers */,
 			);
 			path = Services;
@@ -397,6 +403,7 @@
 				D5696A7B272F5E35009CFC9B /* LabelExtension.swift in Sources */,
 				D56F1E852749350200915F0F /* AuthServices.swift in Sources */,
 				D5F39AB52739A48B00A1277F /* ActiveChatCell.swift in Sources */,
+				D53EB10E2763F07400871B04 /* UIImageExtention.swift in Sources */,
 				D54082022730956E00B9DED9 /* CustomTextField.swift in Sources */,
 				D5B93D4A27442E430087FED5 /* UserCell.swift in Sources */,
 				D5696A79272F5D62009CFC9B /* ImageExtention.swift in Sources */,
@@ -429,6 +436,7 @@
 				D5696A63272F4CE8009CFC9B /* SceneDelegate.swift in Sources */,
 				D5F39AA227371D8F00A1277F /* SegmentedControlExtension.swift in Sources */,
 				D5F39AAC2738107700A1277F /* Bundle-Decodable.swift in Sources */,
+				D53EB10C2762AB8F00871B04 /* StorageServices.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

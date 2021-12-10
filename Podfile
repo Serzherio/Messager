@@ -10,5 +10,6 @@ target 'Messager' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'GoogleSignIn'
+  pod 'Firebase/Storage'
 
 end

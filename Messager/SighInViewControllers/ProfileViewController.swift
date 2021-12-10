@@ -40,11 +40,24 @@ class ProfileViewController: UIViewController {
         setupConstraints()
         self.view.backgroundColor = .white
         
+        self.fullImageView.plusButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
         self.goToChartsButton.addTarget(self, action: #selector(goToChartsButtonTapped), for: .touchUpInside)
     }
     
+    @objc private func plusButtonTapped() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = .photoLibrary
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
     @objc private func goToChartsButtonTapped() {
-        FirestoreService.shared.saveProfileWith(id: currentUser.uid, email: currentUser.email!, username: fullNameTextField.text, avatarImageString: nil, description: aboutMeTextField.text, sex: sexSegmentedControl.titleForSegment(at: sexSegmentedControl.selectedSegmentIndex)) { (result) in
+        FirestoreService.shared.saveProfileWith(id: currentUser.uid,
+                                                email: currentUser.email!,
+                                                username: fullNameTextField.text,
+                                                avatarImage: fullImageView.circleImageView.image,
+                                                description: aboutMeTextField.text,
+                                                sex: sexSegmentedControl.titleForSegment(at: sexSegmentedControl.selectedSegmentIndex)) { (result) in
             switch result {
             case .success(let messageUser):
                 self.showAlert(title: "Успешно", messege: "Приятного общения!") {
@@ -98,6 +111,17 @@ extension ProfileViewController {
     }
 }
 
+
+// MARK: - UIImagePickerControllerDelegate
+extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            return
+        }
+        fullImageView.circleImageView.image = image
+    }
+}
 
 // MARK: - SwiftUI provider for canvas
 import SwiftUI
