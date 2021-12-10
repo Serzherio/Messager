@@ -8,8 +8,9 @@
 import Foundation
 import UIKit
 
+// extension for UIImage class
+// scale photo for server backend
 extension UIImage {
-    
     var scaledToSafeUploadSize: UIImage? {
         let maxImageSideLength: CGFloat = 480
         let largerSide: CGFloat = max(size.width, size.height)
@@ -19,9 +20,7 @@ extension UIImage {
     }
     
     func image(scaledTo size: CGSize) -> UIImage? {
-        defer {
-            UIGraphicsEndImageContext()
-        }
+        defer { UIGraphicsEndImageContext() }
         UIGraphicsBeginImageContextWithOptions(size, true, 0)
         draw(in: CGRect(origin: .zero, size: size))
         return UIGraphicsGetImageFromCurrentImageContext()

@@ -5,8 +5,12 @@
 
 import UIKit
 
-// Autorization View Controller
-// The first VC, witch present you methods to Log in
+/*
+Autorization View Controller
+The first VC, witch present methods to login
+There is a app logo, sign in button with email, login button
+ */
+
 class AuthViewController: UIViewController {
     
 // variables and constants
@@ -17,7 +21,6 @@ class AuthViewController: UIViewController {
     let emailButton = UIButton(title: "Email", titleColor: .black, backgroundColor: .white, font: .avenir20(), isShadow: true, cornerRadius: 4)
     let loginButton = UIButton(title: "Login", titleColor: .white, backgroundColor: .black, font: .avenir20(), isShadow: false, cornerRadius: 4)
     let googleButton = UIButton(title: "Google", titleColor: .red, backgroundColor: .white, font: .avenir20(), isShadow: true, cornerRadius: 4)
-    
     let signUpVC = SighUpViewController()
     let loginVC = LoginViewController()
 
@@ -27,18 +30,21 @@ class AuthViewController: UIViewController {
         self.googleButton.customButtonWithGooleLogo()
         self.view.backgroundColor = .white
         self.setupConstrains()
-        
         self.emailButton.addTarget(self, action: #selector(emailButtonTapped), for: .touchUpInside)
         self.loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        
+// delegates for AuthNavigationProtocol
         self.signUpVC.delegate = self
         self.loginVC.delegate = self
     }
     
+// target button push function
+// present SighUpViewController
     @objc func emailButtonTapped() {
         present(signUpVC, animated: true, completion: nil)
     }
     
+// target button push function
+// present LoginViewController
     @objc func loginButtonTapped() {
         present(loginVC, animated: true, completion: nil)
     }
@@ -64,12 +70,13 @@ class AuthViewController: UIViewController {
     }
 }
 
+// MARK: - AuthNavigationDelegate
 extension AuthViewController: AuthNavigationDelegate {
-    
+// show LoginViewController after login button push
     func toLoginVC() {
         present(loginVC, animated: true, completion: nil)
     }
-    
+// show SignUpViewController after email button push
     func toSingVC() {
         present(signUpVC, animated: true, completion: nil)
     }

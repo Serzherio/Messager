@@ -8,6 +8,16 @@
 import Foundation
 import UIKit
 
+/*
+ custom init with  title,
+                    titleColor,
+                    backgroundColor,
+                    optional font,
+                    bool shadow,
+                    cornerRadius
+ custom UIButton is needed for custom view on signInVC block
+ if button's shadow is needed, init with TRUE isShadow parameter (const)
+*/
 extension UIButton {
     
     convenience init(title: String,

@@ -7,8 +7,11 @@
 
 import UIKit
 
+/*
+ class GradientView to create gradient for UIView
+ */
 class GradientView: UIView {
-    private let gradintLayer = CAGradientLayer()
+    private let gradientLayer = CAGradientLayer()
     
     enum Point {
         case topLeading
@@ -48,14 +51,14 @@ class GradientView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        gradintLayer.frame = bounds
+        gradientLayer.frame = bounds
     }
     
     private func setupGradient(from: Point, to: Point, startColor: UIColor, endColor: UIColor) {
-        self.layer.addSublayer(gradintLayer)
-        gradintLayer.colors = [startColor.cgColor, endColor.cgColor]
-        gradintLayer.startPoint = from.point
-        gradintLayer.endPoint = to.point
+        self.layer.addSublayer(gradientLayer)
+        gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
+        gradientLayer.startPoint = from.point
+        gradientLayer.endPoint = to.point
         
     }
     

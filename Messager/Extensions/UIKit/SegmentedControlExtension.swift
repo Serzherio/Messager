@@ -7,6 +7,8 @@
 
 import UIKit
 
+// extension with custon init for UISegmentedControl class,
+// init with two string params to name segments of UISegmentedControl
 extension UISegmentedControl {
     
     convenience init (first: String, second: String) {

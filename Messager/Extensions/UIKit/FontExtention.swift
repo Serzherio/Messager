@@ -7,6 +7,9 @@
 
 import UIKit
 
+// extension for UIFont class to add new font for project
+// font - avenir, size - 20
+// font - avenir, size - 26
 extension UIFont {
     static func avenir20() -> UIFont? {
         return self.init(name: "avenir", size: 20)

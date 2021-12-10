@@ -6,10 +6,10 @@
 import Foundation
 import FirebaseFirestore
 
-
-// model "MessageUser"
-// model for layout in People VC
-// data struct to complete list of users
+/***
+ model "MessageUser"
+ data struct to complete list of users
+***/
 
 struct MessageUser: Hashable, Decodable {
     var username: String

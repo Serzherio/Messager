@@ -7,6 +7,8 @@
 
 import Foundation
 
+// AuthNavigation protocol
+// transition to loginVC or SignVC
 protocol AuthNavigationDelegate: class {
     func toLoginVC()
     func toSingVC()

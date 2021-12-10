@@ -7,7 +7,12 @@
 
 import UIKit
 
-// SighUpViewController
+/*
+Sigh Up View Controller
+VC, witch present fields for sign up into chat
+There is a email textField, password, comfirm password textField,
+                            signUp button, and transition button to login VC
+ */
 class SighUpViewController: UIViewController {
 
 // variables and constants
@@ -37,19 +42,27 @@ class SighUpViewController: UIViewController {
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
     }
 
+// sighUpButtonTapped
+// register new user
+// show alert with result of register, return success or failure
     @objc private func sighUpButtonTapped() {
         AuthService.shared.register(email: emailTextField.text, password: passwordTextField.text, confirmPassword: confirmPasswordTextField.text) { (result) in
             switch result {
+// return register user in success case
             case .success(let user):
                 self.showAlert(title: "Поздравляю", messege: "Вы зарегистрированы!") {
                     self.present(ProfileViewController(currentUser: user), animated: true, completion: nil)
                 }
+// return error in failure case
             case .failure(let error):
-                self.showAlert(title: "Zelupa", messege: "Error")
+                self.showAlert(title: "Ошибка", messege: error.localizedDescription)
             }
         }
     }
     
+// loginButtonTapped
+// close this VC and show Login VC
+// delegate opening login VC to AuthVC
     @objc private func loginButtonTapped() {
         self.dismiss(animated: true) {
             self.delegate?.toLoginVC()
@@ -114,6 +127,7 @@ struct SignUpVCProvider: PreviewProvider {
     }
 }
 
+// MARK: - showAlert extension
 extension UIViewController {
     func showAlert(title: String, messege: String, completion: @escaping () -> Void = {} ) {
         let alert = UIAlertController(title: title, message: messege, preferredStyle: .alert)
