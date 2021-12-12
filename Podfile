@@ -11,5 +11,6 @@ target 'Messager' do
   pod 'Firebase/Firestore'
   pod 'GoogleSignIn'
   pod 'Firebase/Storage'
+  pod 'SDWebImage', '~> 5.0'
 
 end

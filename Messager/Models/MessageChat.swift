@@ -14,7 +14,7 @@ import Foundation
         var username: String
         var userImageString: String
         var lastMessage: String
-        var id : Int
+        var id: Int
         
         func hash(into haser: inout Hasher){
             haser.combine(id)

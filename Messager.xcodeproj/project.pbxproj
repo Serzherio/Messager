@@ -40,6 +40,7 @@
 		D5B93D4A27442E430087FED5 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B93D4927442E430087FED5 /* UserCell.swift */; };
 		D5B93D4C2745912D0087FED5 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B93D4B2745912D0087FED5 /* ViewControllerExtension.swift */; };
 		D5B93D4E2745A3800087FED5 /* ShowProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B93D4D2745A3800087FED5 /* ShowProfileViewController.swift */; };
+		D5F1F983276686B200DBC03C /* ListenerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1F982276686B200DBC03C /* ListenerService.swift */; };
 		D5F39A9E2735CB2C00A1277F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F39A9D2735CB2C00A1277F /* ProfileViewController.swift */; };
 		D5F39AA02735D28800A1277F /* AddPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F39A9F2735D28800A1277F /* AddPhotoView.swift */; };
 		D5F39AA227371D8F00A1277F /* SegmentedControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F39AA127371D8F00A1277F /* SegmentedControlExtension.swift */; };
@@ -93,6 +94,7 @@
 		D5B93D4927442E430087FED5 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		D5B93D4B2745912D0087FED5 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		D5B93D4D2745A3800087FED5 /* ShowProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowProfileViewController.swift; sourceTree = "<group>"; };
+		D5F1F982276686B200DBC03C /* ListenerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenerService.swift; sourceTree = "<group>"; };
 		D5F39A9D2735CB2C00A1277F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D5F39A9F2735D28800A1277F /* AddPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoView.swift; sourceTree = "<group>"; };
 		D5F39AA127371D8F00A1277F /* SegmentedControlExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlExtension.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				D56F1E842749350200915F0F /* AuthServices.swift */,
 				D529B004274AAB09004468C4 /* FirestoreService.swift */,
 				D53EB10B2762AB8F00871B04 /* StorageServices.swift */,
+				D5F1F982276686B200DBC03C /* ListenerService.swift */,
 				D529B000274A9C9E004468C4 /* Helpers */,
 			);
 			path = Services;
@@ -437,6 +440,7 @@
 				D5F39AA227371D8F00A1277F /* SegmentedControlExtension.swift in Sources */,
 				D5F39AAC2738107700A1277F /* Bundle-Decodable.swift in Sources */,
 				D53EB10C2762AB8F00871B04 /* StorageServices.swift in Sources */,
+				D5F1F983276686B200DBC03C /* ListenerService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,10 +7,13 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 class PeopleViewController: UIViewController {
     
-    let users: [MessageUser] = [] 
+    var users: [MessageUser] = []
+// user listener works when smthg appears on server (new, modify, delete)
+    private var userListener : ListenerRegistration?
     var collectionView : UICollectionView!
     var dataSourse: UICollectionViewDiffableDataSource<Section, MessageUser>?
     private let currentUser: MessageUser
@@ -30,6 +33,11 @@ class PeopleViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         title = currentUser.username
     }
+
+// delete user listener
+    deinit {
+        userListener?.remove()
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -41,9 +49,17 @@ class PeopleViewController: UIViewController {
         setupSearchBar()
         setupCollectionView()
         createDataSource()
-        reloadData(with: nil)
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(signOut))
+        
+        userListener = ListenerService.shared.usersObserve(users: users, completion: { result in
+            switch result {
+            case .success(var users):
+                self.users = users
+                self.reloadData(with: nil)
+            case .failure(let error):
+                self.showAlert(title: "Ошибка", message: error.localizedDescription)
+            }
+        })
     }
     
     @objc private func signOut() {
