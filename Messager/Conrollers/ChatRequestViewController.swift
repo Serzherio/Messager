@@ -7,14 +7,14 @@
 
 import UIKit
 
-class CharRequestViewController: UIViewController {
+class ChatRequestViewController: UIViewController {
     
     let imageView = UIImageView(image: .checkmark, contentMode: .scaleAspectFit)
     let containerView = UIView()
-    let aboutMeLabel = UILabel(textLabel: "Start Chat")
-    let nameLabel = UILabel(textLabel: "Peter")
-    let acceptButton = UIButton(title: "ACCEPT", titleColor: .white, backgroundColor: .black, font: .avenir26(), isShadow: false, cornerRadius: 10)
-    let denyButton = UIButton(title: "DENY", titleColor: .red, backgroundColor: .white, font: .avenir26(), isShadow: false, cornerRadius: 10)
+    let aboutMeLabel = UILabel(textLabel: "Начать беседу")
+    let nameLabel = UILabel(textLabel: "Имя")
+    let acceptButton = UIButton(title: "Принять", titleColor: .white, backgroundColor: .black, font: .avenir26(), isShadow: false, cornerRadius: 10)
+    let denyButton = UIButton(title: "Отклонить", titleColor: .red, backgroundColor: .white, font: .avenir26(), isShadow: false, cornerRadius: 10)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class CharRequestViewController: UIViewController {
     }
 }
 
-extension CharRequestViewController {
+extension ChatRequestViewController {
     
     private func setupConstraints() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -89,8 +89,8 @@ struct CharRequestVCProvider: PreviewProvider {
     }
     
     struct ContainerView: UIViewControllerRepresentable {
-        let viewController = CharRequestViewController()
-        func makeUIViewController(context: UIViewControllerRepresentableContext<CharRequestVCProvider.ContainerView>) -> CharRequestViewController {
+        let viewController = ChatRequestViewController()
+        func makeUIViewController(context: UIViewControllerRepresentableContext<CharRequestVCProvider.ContainerView>) -> ChatRequestViewController {
             return viewController
         }
         func updateUIViewController(_ uiViewController: CharRequestVCProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<CharRequestVCProvider.ContainerView>) {

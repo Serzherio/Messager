@@ -14,8 +14,13 @@ class MainTabBarController: UITabBarController {
 // variables
     private let currentUser: MessageUser
     
-    
-    init(currentUser: MessageUser = MessageUser(username: "", email: "", description: "", avatarStringURL: "", sex: "", id: "")) {
+// custom class init with user
+    init(currentUser: MessageUser = MessageUser(username: "",
+                                                email: "",
+                                                description: "",
+                                                avatarStringURL: "",
+                                                sex: "",
+                                                id: "")) {
         self.currentUser = currentUser
         super.init(nibName: nil, bundle: nil)
     }

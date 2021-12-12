@@ -7,6 +7,7 @@
 
 import Foundation
 
+// enum UserError with errors in user Model
 enum UserError {
     case notFilled
     case photoNotExist
@@ -14,6 +15,7 @@ enum UserError {
     case cannotUnwrapToModel
 }
 
+// desctiption for every error
 extension UserError: LocalizedError {
     var errorDescription: String? {
         switch self {

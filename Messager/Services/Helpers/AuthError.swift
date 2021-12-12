@@ -7,6 +7,7 @@
 
 import Foundation
 
+// enum AuthError with error at authorization
 enum AuthError {
     case notFilled
     case invalidEmail
@@ -15,19 +16,20 @@ enum AuthError {
     case serverError
 }
 
+// desctiption for every error
 extension AuthError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .notFilled:
-            return NSLocalizedString("Заполните все поля", comment: "")
+            return NSLocalizedString("Поля не заполнены", comment: "Заполните все поля")
         case .invalidEmail:
-            return NSLocalizedString("Почта неверна", comment: "")
+            return NSLocalizedString("Ошибка логина/пароля", comment: "Неверные данные для входа")
         case .passNotMatched:
-            return NSLocalizedString("Пароли не совпадают", comment: "Пароли не совпадают")
+            return NSLocalizedString("Ошибка логина/пароля", comment: "Неверные данные для входа")
         case .unknownError:
-            return NSLocalizedString("Ошибка", comment: "")
+            return NSLocalizedString("Неизвестная ошибка", comment: "Повторите вход")
         case .serverError:
-            return NSLocalizedString("Ошибка сервера", comment: "")
+            return NSLocalizedString("Ошибка сервера", comment: "В данный момент ведутся работы на сервере")
         }
         
     }

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		9F1E5A65CC6AB2B2BA683894 /* Pods_Messager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C0622AD3D93F7A9D29512D /* Pods_Messager.framework */; };
 		D519EC552746EC8600A6A26C /* ShowProfileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D519EC542746EC8600A6A26C /* ShowProfileTextField.swift */; };
-		D519EC572746F61900A6A26C /* CharRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D519EC562746F61900A6A26C /* CharRequestViewController.swift */; };
+		D519EC572746F61900A6A26C /* ChatRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D519EC562746F61900A6A26C /* ChatRequestViewController.swift */; };
 		D529AFFB274A757D004468C4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D529AFFA274A757D004468C4 /* GoogleService-Info.plist */; };
 		D529AFFD274A9758004468C4 /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D529AFFC274A9758004468C4 /* Validators.swift */; };
 		D529AFFF274A9984004468C4 /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D529AFFE274A9984004468C4 /* AuthError.swift */; };
@@ -60,7 +60,7 @@
 		95C0622AD3D93F7A9D29512D /* Pods_Messager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Messager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D504A02A193E53776F4EE78A /* Pods-Messager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Messager.release.xcconfig"; path = "Target Support Files/Pods-Messager/Pods-Messager.release.xcconfig"; sourceTree = "<group>"; };
 		D519EC542746EC8600A6A26C /* ShowProfileTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowProfileTextField.swift; sourceTree = "<group>"; };
-		D519EC562746F61900A6A26C /* CharRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharRequestViewController.swift; sourceTree = "<group>"; };
+		D519EC562746F61900A6A26C /* ChatRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequestViewController.swift; sourceTree = "<group>"; };
 		D529AFFA274A757D004468C4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D529AFFC274A9758004468C4 /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
 		D529AFFE274A9984004468C4 /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
@@ -263,7 +263,7 @@
 				D5F39AA72737272A00A1277F /* ListViewController.swift */,
 				D5F39AA92737273700A1277F /* PeopleViewController.swift */,
 				D5B93D4D2745A3800087FED5 /* ShowProfileViewController.swift */,
-				D519EC562746F61900A6A26C /* CharRequestViewController.swift */,
+				D519EC562746F61900A6A26C /* ChatRequestViewController.swift */,
 				D5F39AB32739A3F700A1277F /* Cell */,
 			);
 			path = Conrollers;
@@ -422,7 +422,7 @@
 				D5B93D462742DBD50087FED5 /* MessageChat.swift in Sources */,
 				D5F39AA02735D28800A1277F /* AddPhotoView.swift in Sources */,
 				D5F39AA5273726CF00A1277F /* MainTabBarController.swift in Sources */,
-				D519EC572746F61900A6A26C /* CharRequestViewController.swift in Sources */,
+				D519EC572746F61900A6A26C /* ChatRequestViewController.swift in Sources */,
 				D529B003274AA8CA004468C4 /* AuthNavigationDelegate.swift in Sources */,
 				D529B005274AAB09004468C4 /* FirestoreService.swift in Sources */,
 				D5F39AB9273AF00E00A1277F /* WaitingChatCell.swift in Sources */,

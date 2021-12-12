@@ -7,8 +7,8 @@
 
 import Foundation
 
+// class Validators for check the correct fill email textField, matching passord and confirmPassword textFields
 class Validators {
-    
     static func isFilled(email: String?, password: String?, confirmPassword: String?) -> Bool {
         guard let password = password,
               let confirmPassword = confirmPassword,

@@ -6,10 +6,10 @@
 import Foundation
 import FirebaseFirestore
 
-/***
+/*
  model "MessageUser"
  data struct to complete list of users
-***/
+*/
 
 struct MessageUser: Hashable, Decodable {
     var username: String

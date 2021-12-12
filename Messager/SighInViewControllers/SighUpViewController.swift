@@ -50,12 +50,12 @@ class SighUpViewController: UIViewController {
             switch result {
 // return register user in success case
             case .success(let user):
-                self.showAlert(title: "Поздравляю", messege: "Вы зарегистрированы!") {
+                self.showAlert(title: "Поздравляю", message: "Вы зарегистрированы!") {
                     self.present(ProfileViewController(currentUser: user), animated: true, completion: nil)
                 }
 // return error in failure case
             case .failure(let error):
-                self.showAlert(title: "Ошибка", messege: error.localizedDescription)
+                self.showAlert(title: "Ошибка", message: error.localizedDescription)
             }
         }
     }
@@ -129,8 +129,8 @@ struct SignUpVCProvider: PreviewProvider {
 
 // MARK: - showAlert extension
 extension UIViewController {
-    func showAlert(title: String, messege: String, completion: @escaping () -> Void = {} ) {
-        let alert = UIAlertController(title: title, message: messege, preferredStyle: .alert)
+    func showAlert(title: String, message: String, completion: @escaping () -> Void = {} ) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .default) { _ in
             completion()
         }

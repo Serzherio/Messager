@@ -9,15 +9,24 @@ import Firebase
 import FirebaseFirestore
 import UIKit
 
+/*
+ class FirestoreService
+ responsible for saving data of exist user
+ responsible for getting data of exist user
+ */
 class FirestoreService {
+
+// singleton
     static let shared = FirestoreService()
-    
+// database
     let db = Firestore.firestore()
-    
+// reference for folder in firebase database
     private var usersRef: CollectionReference {
         return db.collection("users")
     }
-    
+
+// get user data func takes user and completion block with Result onboard
+// return all user data if exists
     func getUserData(user: User, completion: @escaping(Result<MessageUser, Error>) -> Void) {
         let docRef = usersRef.document(user.uid)
         docRef.getDocument { document, error in
@@ -33,7 +42,7 @@ class FirestoreService {
         }
     }
 
-    
+// save user profile func takes id, email, username, user avatar
     func saveProfileWith(id: String, email:String, username: String?, avatarImage: UIImage?, description: String?, sex: String?, completion: @escaping(Result<MessageUser, Error>) -> Void) {
         guard Validators.isFilled(username: username, description: description, sex: sex) else {
             completion(.failure(UserError.notFilled))
@@ -43,9 +52,10 @@ class FirestoreService {
             completion(.failure(UserError.photoNotExist))
             return
         }
-        
-        var messageUser = MessageUser(username: username!, email: email, description: description!, avatarStringURL: "lol", sex: sex!, id: id)
-        
+        var messageUser = MessageUser(username: username!, email: email, description: description!, avatarStringURL: " ", sex: sex!, id: id)
+
+// upload data on server
+// upload user avatar
         StorageServices.shared.upload(photo: avatarImage!) { result in
             switch result {
             case .success(let url):
@@ -61,7 +71,5 @@ class FirestoreService {
                 completion(.failure(error))
             }
         }
-        
     }
-    
 }

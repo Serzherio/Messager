@@ -9,8 +9,7 @@ import UIKit
 
 class ListViewController: UIViewController {
     
-// variables
-    
+  
     // enum with section's types
     enum Section: Int, CaseIterable {
         case waitingChats, activeChats
@@ -23,6 +22,8 @@ class ListViewController: UIViewController {
             }
         }
     }
+    
+    // variables
     // fake data from json files
     let activeChats = Bundle.main.decode([MessageChat].self, from: "activeChats.json")
     let waitingChats = Bundle.main.decode([MessageChat].self, from: "waitingChats.json")

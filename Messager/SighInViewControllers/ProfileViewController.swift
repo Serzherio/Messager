@@ -5,7 +5,11 @@
 
 import UIKit
 import FirebaseAuth
-// ProfileViewController
+/*
+ ProfileViewController
+VC, witch present input fields for user data
+There are a user photo, full name tf, about user tf, user sex, go to chat button
+ */
 class ProfileViewController: UIViewController {
 
 // variables and constants
@@ -23,8 +27,9 @@ class ProfileViewController: UIViewController {
         return label
     }()
     
+// Firebase auth system user
     private let currentUser: User
-    
+// init VC with Firebase auth system user
     init(currentUser: User) {
         self.currentUser = currentUser
         super.init(nibName: nil, bundle: nil)
@@ -44,6 +49,8 @@ class ProfileViewController: UIViewController {
         self.goToChartsButton.addTarget(self, action: #selector(goToChartsButtonTapped), for: .touchUpInside)
     }
     
+// plusButtonTapped
+// show photo library for choosing photo for user avatar
     @objc private func plusButtonTapped() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
@@ -51,6 +58,9 @@ class ProfileViewController: UIViewController {
         present(imagePickerController, animated: true, completion: nil)
     }
     
+// goToChartsButtonTapped
+// save user data to Firestore
+// show alert with result of uploading data
     @objc private func goToChartsButtonTapped() {
         FirestoreService.shared.saveProfileWith(id: currentUser.uid,
                                                 email: currentUser.email!,
@@ -60,13 +70,13 @@ class ProfileViewController: UIViewController {
                                                 sex: sexSegmentedControl.titleForSegment(at: sexSegmentedControl.selectedSegmentIndex)) { (result) in
             switch result {
             case .success(let messageUser):
-                self.showAlert(title: "Успешно", messege: "Приятного общения!") {
+                self.showAlert(title: "Данные сохранены", message: "Приятного общения!") {
                     let mainTabBar = MainTabBarController(currentUser: messageUser)
                     mainTabBar.modalPresentationStyle = .fullScreen
                     self.present(mainTabBar, animated: true, completion: nil)
                 }
             case .failure(let error):
-                self.showAlert(title: "Ошибка", messege: error.localizedDescription)
+                self.showAlert(title: "Ошибка сохранения пользовательских данных", message: error.localizedDescription)
             }
         }
     }
@@ -74,7 +84,6 @@ class ProfileViewController: UIViewController {
 
 
 extension ProfileViewController {
-    
 // setup constraints with custom stack view
 // fullNameStackView
 // aboutMeStackView
@@ -123,20 +132,4 @@ extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerCo
     }
 }
 
-// MARK: - SwiftUI provider for canvas
-import SwiftUI
 
-struct ProfileVCProvider: PreviewProvider {
-    static var previews: some View {
-        ContainerView().previewDevice("iPhone 13 Pro Max").edgesIgnoringSafeArea(.all)
-    }
-    
-    struct ContainerView: UIViewControllerRepresentable {
-        let viewController = ProfileViewController(currentUser: Auth.auth().currentUser!)
-        func makeUIViewController(context: UIViewControllerRepresentableContext<ProfileVCProvider.ContainerView>) -> ProfileViewController {
-            return viewController
-        }
-        func updateUIViewController(_ uiViewController: ProfileVCProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<ProfileVCProvider.ContainerView>) {
-        }
-    }
-}
