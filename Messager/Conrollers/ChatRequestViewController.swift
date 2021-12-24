@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SDWebImage
+
 
 class ChatRequestViewController: UIViewController {
     
@@ -15,12 +17,40 @@ class ChatRequestViewController: UIViewController {
     let nameLabel = UILabel(textLabel: "Имя")
     let acceptButton = UIButton(title: "Принять", titleColor: .white, backgroundColor: .black, font: .avenir26(), isShadow: false, cornerRadius: 10)
     let denyButton = UIButton(title: "Отклонить", titleColor: .red, backgroundColor: .white, font: .avenir26(), isShadow: false, cornerRadius: 10)
+    private var chat: MessageChat
+    weak var delegate: WaitingChatsNavigation?
+    
+    init(chat: MessageChat) {
+        self.chat = chat
+        self.nameLabel.text = chat.friendUsername
+        self.imageView.sd_setImage(with: URL(string: chat.friendUserImageString), completed: nil)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .gray
         setupConstraints()
         customiseElements()
+        
+        self.denyButton.addTarget(self, action: #selector(denyButtonPressed), for: .touchUpInside)
+        self.acceptButton.addTarget(self, action: #selector(acceptButtonPressed), for: .touchUpInside)
+        
+    }
+    
+    @objc private func denyButtonPressed() {
+        self.dismiss(animated: true) {
+            self.delegate?.removeWaitingChat(chat: self.chat)
+        }
+    }
+    @objc private func acceptButtonPressed() {
+        self.dismiss(animated: true) {
+            self.delegate?.changeToActive(chat: self.chat)
+        }
     }
     
     private func customiseElements() {
@@ -77,23 +107,5 @@ extension ChatRequestViewController {
             buttonsStackView.trailingAnchor.constraint(equalTo: self.containerView.trailingAnchor, constant: -24),
             buttonsStackView.heightAnchor.constraint(equalToConstant: 60)
         ])
-    }
-}
-
-// MARK: - SwiftUI provider for canvas
-import SwiftUI
-
-struct CharRequestVCProvider: PreviewProvider {
-    static var previews: some View {
-        ContainerView().previewDevice("iPhone 13 Pro Max").edgesIgnoringSafeArea(.all)
-    }
-    
-    struct ContainerView: UIViewControllerRepresentable {
-        let viewController = ChatRequestViewController()
-        func makeUIViewController(context: UIViewControllerRepresentableContext<CharRequestVCProvider.ContainerView>) -> ChatRequestViewController {
-            return viewController
-        }
-        func updateUIViewController(_ uiViewController: CharRequestVCProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<CharRequestVCProvider.ContainerView>) {
-        }
     }
 }

@@ -19,7 +19,7 @@ class UserCell: UICollectionViewCell, ConfiguringCell {
   
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .white
+        self.backgroundColor = .red
         setupConstraints()
     }
     

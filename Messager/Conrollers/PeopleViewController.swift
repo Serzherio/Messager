@@ -85,6 +85,7 @@ class PeopleViewController: UIViewController {
         self.view.addSubview(self.collectionView)
         self.collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
         self.collectionView.register(UserCell.self, forCellWithReuseIdentifier: UserCell.reuseId)
+        self.collectionView.delegate = self
         
         
     }
@@ -185,6 +186,15 @@ extension PeopleViewController: UISearchBarDelegate {
     
 }
 
+// MARK:  - UICollectionViewDelegate
+extension PeopleViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let user = self.dataSourse?.itemIdentifier(for: indexPath) else {return}
+        let profileVC = ShowProfileViewController(user: user)
+        present(profileVC, animated: true, completion: nil)
+    }
+}
 
 // MARK: - SwiftUI provider for canvas
 import SwiftUI

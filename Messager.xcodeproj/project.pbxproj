@@ -41,6 +41,8 @@
 		D5B93D4C2745912D0087FED5 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B93D4B2745912D0087FED5 /* ViewControllerExtension.swift */; };
 		D5B93D4E2745A3800087FED5 /* ShowProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B93D4D2745A3800087FED5 /* ShowProfileViewController.swift */; };
 		D5F1F983276686B200DBC03C /* ListenerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1F982276686B200DBC03C /* ListenerService.swift */; };
+		D5F1F9852768788900DBC03C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1F9842768788900DBC03C /* Message.swift */; };
+		D5F1F987276B776400DBC03C /* WaitingChatsNavigationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1F986276B776300DBC03C /* WaitingChatsNavigationProtocol.swift */; };
 		D5F39A9E2735CB2C00A1277F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F39A9D2735CB2C00A1277F /* ProfileViewController.swift */; };
 		D5F39AA02735D28800A1277F /* AddPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F39A9F2735D28800A1277F /* AddPhotoView.swift */; };
 		D5F39AA227371D8F00A1277F /* SegmentedControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F39AA127371D8F00A1277F /* SegmentedControlExtension.swift */; };
@@ -95,6 +97,8 @@
 		D5B93D4B2745912D0087FED5 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		D5B93D4D2745A3800087FED5 /* ShowProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowProfileViewController.swift; sourceTree = "<group>"; };
 		D5F1F982276686B200DBC03C /* ListenerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenerService.swift; sourceTree = "<group>"; };
+		D5F1F9842768788900DBC03C /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		D5F1F986276B776300DBC03C /* WaitingChatsNavigationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingChatsNavigationProtocol.swift; sourceTree = "<group>"; };
 		D5F39A9D2735CB2C00A1277F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D5F39A9F2735D28800A1277F /* AddPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoView.swift; sourceTree = "<group>"; };
 		D5F39AA127371D8F00A1277F /* SegmentedControlExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlExtension.swift; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 			children = (
 				D5F39ABA273AF13400A1277F /* ConfigureCellProtocol.swift */,
 				D529B002274AA8CA004468C4 /* AuthNavigationDelegate.swift */,
+				D5F1F986276B776300DBC03C /* WaitingChatsNavigationProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -244,6 +249,7 @@
 			children = (
 				D5B93D452742DBD50087FED5 /* MessageChat.swift */,
 				D5B93D472742DBF70087FED5 /* MessageUser.swift */,
+				D5F1F9842768788900DBC03C /* Message.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -408,6 +414,7 @@
 				D5F39AB52739A48B00A1277F /* ActiveChatCell.swift in Sources */,
 				D53EB10E2763F07400871B04 /* UIImageExtention.swift in Sources */,
 				D54082022730956E00B9DED9 /* CustomTextField.swift in Sources */,
+				D5F1F987276B776400DBC03C /* WaitingChatsNavigationProtocol.swift in Sources */,
 				D5B93D4A27442E430087FED5 /* UserCell.swift in Sources */,
 				D5696A79272F5D62009CFC9B /* ImageExtention.swift in Sources */,
 				D5F39AAA2737273700A1277F /* PeopleViewController.swift in Sources */,
@@ -420,6 +427,7 @@
 				D54081FC2730769500B9DED9 /* Label+ButtonView.swift in Sources */,
 				D529AFFF274A9984004468C4 /* AuthError.swift in Sources */,
 				D5F39AB7273AE95800A1277F /* GradientView.swift in Sources */,
+				D5F1F9852768788900DBC03C /* Message.swift in Sources */,
 				D5696A65272F4CE8009CFC9B /* AuthViewController.swift in Sources */,
 				D5B93D4C2745912D0087FED5 /* ViewControllerExtension.swift in Sources */,
 				D5B93D462742DBD50087FED5 /* MessageChat.swift in Sources */,

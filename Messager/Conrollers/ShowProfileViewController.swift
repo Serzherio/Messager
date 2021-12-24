@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ShowProfileViewController: UIViewController {
     
@@ -14,6 +15,20 @@ class ShowProfileViewController: UIViewController {
     let nameLabel = UILabel(textLabel: "Peter")
     let aboutMeLabel = UILabel(textLabel: "It is me")
     let textField = ShowProfileTextField()
+    
+    private let user: MessageUser
+    
+    init(user: MessageUser) {
+        self.user = user
+        self.nameLabel.text = user.username
+        self.aboutMeLabel.text = user.description
+        self.imageView.sd_setImage(with: URL(string:user.avatarStringURL), completed: nil)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +47,20 @@ class ShowProfileViewController: UIViewController {
     }
     
     @objc private func sendMessage() {
+        guard let message = textField.text, message != "" else {return}
         
-    }
-    
+        self.dismiss(animated: true) {
+            FirestoreService.shared.createWaitingChat(message: message, reciever: self.user) { (result) in
+                switch result {
+                case .success():
+                    self.topMostController()?.showAlert(title: "Отлично", message: "Пользователь получил ваше сообщение")
+                case .failure(let error):
+                    self.topMostController()?.showAlert(title: "Ошибка", message: error.localizedDescription)
+                } // result
+            } // createWaitingChats
+        } // dismiss
+    } // sendMessage
+
 }
 
 extension ShowProfileViewController {
@@ -94,7 +120,7 @@ struct ShowProfileVCProvider: PreviewProvider {
     }
     
     struct ContainerView: UIViewControllerRepresentable {
-        let viewController = ShowProfileViewController()
+        let viewController = ShowProfileViewController(user: MessageUser(username: "", email: "", description: "", avatarStringURL: "", sex: "", id: ""))
         func makeUIViewController(context: UIViewControllerRepresentableContext<ShowProfileVCProvider.ContainerView>) -> ShowProfileViewController {
             return viewController
         }

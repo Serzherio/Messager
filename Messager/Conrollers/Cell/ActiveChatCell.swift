@@ -6,12 +6,11 @@
 //
 
 import UIKit
+import SDWebImage
 
 
 
 class ActiveChatCell: UICollectionViewCell, ConfiguringCell {
-    
-   
     
     static var reuseId: String = "ActiveChatCell"
     
@@ -21,17 +20,11 @@ class ActiveChatCell: UICollectionViewCell, ConfiguringCell {
     let gradientView = GradientView(from: .topTrailing, to: .bottomLeading, startColor: .magenta, endColor: .green)
     
     
-//    func configure(with value: MessageChat) {
-//        self.friendImage.image = UIImage(named: value.userImageString)
-//        self.friendNameLabel.text = value.username
-//        self.lastMessageLabel.text = value.lastMessage
-//    }
-    
     func configure<U>(with value: U) where U : Hashable {
         guard let chat: MessageChat = value as? MessageChat else { return }
-        friendImage.image = UIImage(named: chat.userImageString)
-        friendNameLabel.text = chat.username
-        lastMessageLabel.text = chat.lastMessage
+        friendNameLabel.text = chat.friendUsername
+        lastMessageLabel.text = chat.lastMessageContent
+        friendImage.sd_setImage(with: URL(string: chat.friendUserImageString), completed: nil)
     }
     
     override init(frame: CGRect) {
