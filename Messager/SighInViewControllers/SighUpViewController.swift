@@ -79,7 +79,7 @@ class SighUpViewController: UIViewController {
         let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField], axis: .vertical, spacing: 5)
         let confirmPasswordStackView = UIStackView(arrangedSubviews: [confirmPasswordLabel, confirmPasswordTextField], axis: .vertical, spacing: 5)
         self.sighUpButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        let stackView = UIStackView(arrangedSubviews: [emailStackView, passwordStackView, confirmPasswordStackView, sighUpButton], axis: .vertical, spacing: 100)
+        let stackView = UIStackView(arrangedSubviews: [emailStackView, passwordStackView, confirmPasswordStackView, sighUpButton], axis: .vertical, spacing: 50)
         self.loginButton.contentHorizontalAlignment = .leading
         let bottomStackView = UIStackView(arrangedSubviews: [onBoardLabel, loginButton], axis: .horizontal, spacing: 10)
         bottomStackView.alignment = .firstBaseline
@@ -89,11 +89,11 @@ class SighUpViewController: UIViewController {
         self.sighUpButton.translatesAutoresizingMaskIntoConstraints = false
 
         self.view.addSubview(stackView)
-        self.view.addSubview(bottomStackView)
+        self.view.addSubview(bottomStackView)   
         self.view.addSubview(welcomeLabel)
         
         NSLayoutConstraint.activate([
-            self.welcomeLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 70),
+            self.welcomeLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 50),
             self.welcomeLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
         
@@ -107,6 +107,7 @@ class SighUpViewController: UIViewController {
             bottomStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 50),
             bottomStackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40),
             bottomStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -40),
+            bottomStackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -30),
         ])
     }
 }

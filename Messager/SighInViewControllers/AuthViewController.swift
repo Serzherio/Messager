@@ -14,21 +14,18 @@ There is a app logo, sign in button with email, login button
 class AuthViewController: UIViewController {
     
 // variables and constants
-    let logoImageView = UIImageView(image: UIImage(named: "titleLogo.pdf")!, contentMode: .scaleAspectFit)
-    let googleLabel = UILabel(textLabel: "Get started")
-    let emailLabel = UILabel(textLabel: "Sign with")
-    let onBoardLabel = UILabel(textLabel: "On board")
-    let emailButton = UIButton(title: "Email", titleColor: .black, backgroundColor: .white, font: .avenir20(), isShadow: true, cornerRadius: 4)
-    let loginButton = UIButton(title: "Login", titleColor: .white, backgroundColor: .black, font: .avenir20(), isShadow: false, cornerRadius: 4)
-    let googleButton = UIButton(title: "Google", titleColor: .red, backgroundColor: .white, font: .avenir20(), isShadow: true, cornerRadius: 4)
+    let logoImageView = UIImageView(image: UIImage(named: "milan.png")!, contentMode: .scaleAspectFit)
+    let emailLabel = UILabel(textLabel: "Registration with:")
+    let onBoardLabel = UILabel(textLabel: "Have an account?")
+    let emailButton = UIButton(title: "Email", titleColor: .black, backgroundColor: .white, font: .avenir26(), isShadow: true, cornerRadius: 10)
+    let loginButton = UIButton(title: "Login", titleColor: .white, backgroundColor: .black, font: .avenir26(), isShadow: false, cornerRadius: 10)
     let signUpVC = SighUpViewController()
     let loginVC = LoginViewController()
 
 // view did load
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.googleButton.customButtonWithGooleLogo()
-        self.view.backgroundColor = .white
+        customDesign()
         self.setupConstrains()
         self.emailButton.addTarget(self, action: #selector(emailButtonTapped), for: .touchUpInside)
         self.loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
@@ -48,14 +45,20 @@ class AuthViewController: UIViewController {
     @objc func loginButtonTapped() {
         present(loginVC, animated: true, completion: nil)
     }
+    
+// настройка дизайна интерфейса
+    private func customDesign() {
+        self.view.backgroundColor = .white
+        self.emailLabel.font = UIFont.systemFont(ofSize: 20)
+        self.onBoardLabel.font = UIFont.systemFont(ofSize: 20)
+    }
 
 // setup constraints for user interface
     private func setupConstrains() {
         self.logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        let googleView = LabelPlusButtonView(label: googleLabel, button: googleButton)
         let emailView = LabelPlusButtonView(label: emailLabel, button: emailButton)
         let loginView = LabelPlusButtonView(label: onBoardLabel, button: loginButton)
-        let stackView = UIStackView(arrangedSubviews: [googleView, emailView, loginView], axis: .vertical, spacing: 50)
+        let stackView = UIStackView(arrangedSubviews: [emailView, loginView], axis: .vertical, spacing: 50)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.logoImageView)
         self.view.addSubview(stackView)
@@ -64,8 +67,11 @@ class AuthViewController: UIViewController {
             stackView.topAnchor.constraint(equalTo: self.logoImageView.bottomAnchor, constant: 100),
             stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40),
             stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -40),
-            self.logoImageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 150),
-            self.logoImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+            self.logoImageView.topAnchor.constraint(greaterThanOrEqualTo: self.view.topAnchor, constant: 50),
+            self.logoImageView.topAnchor.constraint(lessThanOrEqualTo: self.view.topAnchor, constant: 100),
+            self.logoImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.logoImageView.heightAnchor.constraint(equalToConstant: 150),
+            self.logoImageView.widthAnchor.constraint(equalToConstant: 150)
         ])
     }
 }

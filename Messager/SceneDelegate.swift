@@ -19,21 +19,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        
-        if let user = Auth.auth().currentUser {
-            FirestoreService.shared.getUserData(user: user) { result in
-                switch result {
-                case .success(let user):
-                    let mainTabBar = MainTabBarController(currentUser: user)
-                    mainTabBar.modalPresentationStyle = .fullScreen
-                    self.window?.rootViewController = mainTabBar
-                case .failure(let error):
-                    self.window?.rootViewController = AuthViewController()
-                }
-            }
-        } else {
-            window?.rootViewController = AuthViewController()
-        }
+        window?.rootViewController = AuthViewController()
+//        if let user = Auth.auth().currentUser {
+//            FirestoreService.shared.getUserData(user: user) { result in
+//                switch result {
+//                case .success(let user):
+//                    let mainTabBar = MainTabBarController(currentUser: user)
+//                    mainTabBar.modalPresentationStyle = .fullScreen
+//                    self.window?.rootViewController = mainTabBar
+//                case .failure(let error):
+//                    self.window?.rootViewController = AuthViewController()
+//                }
+//            }
+//        } else {
+//            window?.rootViewController = AuthViewController()
+//        }
         window?.makeKeyAndVisible()
         
     }
