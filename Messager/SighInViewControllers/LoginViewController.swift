@@ -14,17 +14,14 @@ There is a email textField, password textField,
 class LoginViewController: UIViewController {
 
 // variables and constants
-    let welcomeLabel = UILabel(textLabel: "Welcome back")
-    let loginWithLabel = UILabel(textLabel: "Login with")
-    let orLabel = UILabel(textLabel: "or")
+    let welcomeLabel = UILabel(textLabel: "Welcome back!")
     let emailLabel = UILabel(textLabel: "Email")
     let passwordLabel = UILabel(textLabel: "Password")
     let needAnAccountLabel = UILabel(textLabel: "Need an account?")
-    let googleButton = UIButton(title: "Google", titleColor: .white, backgroundColor: .black, font: .avenir20(), isShadow: true, cornerRadius: 4)
-    let loginButton = UIButton(title: "Login", titleColor: .black, backgroundColor: .white, font: .avenir20(), isShadow: true, cornerRadius: 4)
+    let loginButton = UIButton(title: "Login", titleColor: .white, backgroundColor: .black, font: .avenir20(), isShadow: false, cornerRadius: 10)
     let signUpButton : UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("sign in", for: .normal)
+        button.setTitle("Sign in", for: .normal)
         button.setTitleColor(UIColor.red, for: .normal)
         button.titleLabel?.font = .avenir20()
         return button
@@ -40,7 +37,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.welcomeLabel.font = .avenir26()
-        self.googleButton.customButtonWithGooleLogo()
         self.view.backgroundColor = .white
         setUpConstraints()
         
@@ -94,14 +90,14 @@ class LoginViewController: UIViewController {
 extension LoginViewController {
     
     private func setUpConstraints() {
-        let loginView = LabelPlusButtonView(label: self.loginWithLabel, button: self.googleButton)
-        let emailStackView = UIStackView(arrangedSubviews: [self.emailLabel, self.emailTextField], axis: .vertical, spacing: 0)
-        let passwordStackView = UIStackView(arrangedSubviews: [self.passwordLabel, self.passwordTextField], axis: .vertical, spacing: 0)
-        self.loginButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        let stackView = UIStackView(arrangedSubviews: [loginView, orLabel, emailStackView, passwordStackView, loginButton], axis: .vertical, spacing: 40)
+        let emailStackView = UIStackView(arrangedSubviews: [self.emailLabel, self.emailTextField], axis: .vertical, spacing: 20)
+        let passwordStackView = UIStackView(arrangedSubviews: [self.passwordLabel, self.passwordTextField], axis: .vertical, spacing: 20)
+        self.loginButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        let stackView = UIStackView(arrangedSubviews: [emailStackView, passwordStackView, loginButton], axis: .vertical, spacing: 50)
         self.signUpButton.contentHorizontalAlignment = .leading
-        let bottomStackView = UIStackView(arrangedSubviews: [self.needAnAccountLabel, self.signUpButton], axis: .horizontal, spacing: 0)
-        bottomStackView.alignment = .firstBaseline
+        let bottomStackView = UIStackView(arrangedSubviews: [self.needAnAccountLabel, self.signUpButton], axis: .horizontal, spacing: 10)
+//        bottomStackView.alignment = .firstBaseline
+        bottomStackView.alignment = .fill
         self.welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
         bottomStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -111,18 +107,19 @@ extension LoginViewController {
         self.view.addSubview(bottomStackView)
         
         NSLayoutConstraint.activate([
-            welcomeLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100),
+            welcomeLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 40),
             welcomeLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: self.welcomeLabel.bottomAnchor, constant: 50),
+            stackView.topAnchor.constraint(greaterThanOrEqualTo: self.welcomeLabel.bottomAnchor, constant: 50),
             stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40),
             stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -40),
+//            stackView.bottomAnchor.constraint(greaterThanOrEqualTo: bottomStackView.topAnchor, constant: -100)
         ])
         NSLayoutConstraint.activate([
-            bottomStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 50),
             bottomStackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40),
             bottomStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -40),
+            bottomStackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -40)
         ])
     }
 }

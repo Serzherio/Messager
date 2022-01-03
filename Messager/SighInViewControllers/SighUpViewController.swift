@@ -98,7 +98,7 @@ class SighUpViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: self.welcomeLabel.bottomAnchor, constant: 40),
+            stackView.topAnchor.constraint(greaterThanOrEqualTo: self.welcomeLabel.bottomAnchor, constant: 50),
             stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40),
             stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -40),
         ])
