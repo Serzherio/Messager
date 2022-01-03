@@ -63,12 +63,21 @@ class AuthViewController: UIViewController {
         self.view.addSubview(self.logoImageView)
         self.view.addSubview(stackView)
         
+        
+        
+        let logoImageViewTopAnchor1 = logoImageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100)
+        logoImageViewTopAnchor1.priority = UILayoutPriority(998)
+        let logoImageViewTopAnchor2 = self.logoImageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 50)
+        logoImageViewTopAnchor2.priority = UILayoutPriority(997)
+        
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: self.logoImageView.bottomAnchor, constant: 100),
+            stackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -80),
+            stackView.topAnchor.constraint(greaterThanOrEqualTo: self.logoImageView.bottomAnchor, constant: 50),
             stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40),
             stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -40),
-            self.logoImageView.topAnchor.constraint(greaterThanOrEqualTo: self.view.topAnchor, constant: 50),
-            self.logoImageView.topAnchor.constraint(lessThanOrEqualTo: self.view.topAnchor, constant: 100),
+            stackView.heightAnchor.constraint(equalToConstant: 320),
+            logoImageViewTopAnchor1,
+            logoImageViewTopAnchor2,
             self.logoImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.logoImageView.heightAnchor.constraint(equalToConstant: 150),
             self.logoImageView.widthAnchor.constraint(equalToConstant: 150)

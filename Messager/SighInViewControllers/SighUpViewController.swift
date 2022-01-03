@@ -24,7 +24,7 @@ class SighUpViewController: UIViewController {
     let emailTextField = OneLineTextField(font: .avenir20())
     let passwordTextField = OneLineTextField(font: .avenir20())
     let confirmPasswordTextField = OneLineTextField(font: .avenir20())
-    let sighUpButton = UIButton(title: "Sigh up", titleColor: .white, backgroundColor: .black, font: .avenir20(), isShadow: true, cornerRadius: 4)
+    let sighUpButton = UIButton(title: "Sigh up", titleColor: .white, backgroundColor: .black, font: .avenir20(), isShadow: false, cornerRadius: 10)
     let loginButton = UIButton()
     
     weak var delegate: AuthNavigationDelegate?
@@ -78,10 +78,10 @@ class SighUpViewController: UIViewController {
         let emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField], axis: .vertical, spacing: 5)
         let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField], axis: .vertical, spacing: 5)
         let confirmPasswordStackView = UIStackView(arrangedSubviews: [confirmPasswordLabel, confirmPasswordTextField], axis: .vertical, spacing: 5)
-        self.sighUpButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        self.sighUpButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
         let stackView = UIStackView(arrangedSubviews: [emailStackView, passwordStackView, confirmPasswordStackView, sighUpButton], axis: .vertical, spacing: 50)
         self.loginButton.contentHorizontalAlignment = .leading
-        let bottomStackView = UIStackView(arrangedSubviews: [onBoardLabel, loginButton], axis: .horizontal, spacing: 10)
+        let bottomStackView = UIStackView(arrangedSubviews: [onBoardLabel, loginButton], axis: .horizontal, spacing: 20)
         bottomStackView.alignment = .firstBaseline
         stackView.translatesAutoresizingMaskIntoConstraints = false
         bottomStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -93,21 +93,21 @@ class SighUpViewController: UIViewController {
         self.view.addSubview(welcomeLabel)
         
         NSLayoutConstraint.activate([
-            self.welcomeLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 50),
+            self.welcomeLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 40),
             self.welcomeLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: self.welcomeLabel.bottomAnchor, constant: 50),
+            stackView.topAnchor.constraint(equalTo: self.welcomeLabel.bottomAnchor, constant: 40),
             stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40),
             stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -40),
         ])
         
         NSLayoutConstraint.activate([
-            bottomStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 50),
+//            bottomStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 50),
             bottomStackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40),
             bottomStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -40),
-            bottomStackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -30),
+            bottomStackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -40),
         ])
     }
 }
