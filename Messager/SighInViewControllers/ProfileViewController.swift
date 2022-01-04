@@ -20,7 +20,7 @@ class ProfileViewController: UIViewController {
     let fullNameTextField = OneLineTextField(font: .avenir20())
     let aboutMeTextField = OneLineTextField(font: .avenir20())
     let sexSegmentedControl = UISegmentedControl(first: "male", second: "female")
-    let goToChartsButton = UIButton(title: "Go charts", titleColor: .black, backgroundColor: .white, font: .avenir20(), isShadow: true, cornerRadius: 4)
+    let goToChartsButton = UIButton(title: "Go charts", titleColor: .white, backgroundColor: .black, font: .avenir20(), isShadow: false, cornerRadius: 10)
     let welcomeLabel: UILabel = {
         let label = UILabel(textLabel: "Set up profile")
         label.font = .avenir26()
@@ -103,7 +103,7 @@ extension ProfileViewController {
         self.view.addSubview(stackView)
         
         NSLayoutConstraint.activate([
-            welcomeLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100),
+            welcomeLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 40),
             welcomeLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
         
