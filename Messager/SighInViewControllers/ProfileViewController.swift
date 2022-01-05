@@ -93,7 +93,7 @@ extension ProfileViewController {
         let fullNameStackView = UIStackView(arrangedSubviews: [self.fullNameLabel, self.fullNameTextField], axis: .vertical, spacing: 0)
         let aboutMeStackView = UIStackView(arrangedSubviews: [self.aboutMeLabel, self.aboutMeTextField], axis: .vertical, spacing: 0)
         let sexStackView = UIStackView(arrangedSubviews: [self.sexLabel, self.sexSegmentedControl], axis: .vertical, spacing: 12)
-        self.goToChartsButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        self.goToChartsButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
         let stackView = UIStackView(arrangedSubviews: [fullNameStackView,aboutMeStackView,sexStackView,goToChartsButton], axis: .vertical, spacing: 40)
         self.fullImageView.translatesAutoresizingMaskIntoConstraints = false
         self.welcomeLabel.translatesAutoresizingMaskIntoConstraints = false

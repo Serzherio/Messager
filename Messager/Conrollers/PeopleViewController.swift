@@ -81,7 +81,7 @@ class PeopleViewController: UIViewController {
     private func setupCollectionView() {
         self.collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: createCompositionalLayout())
         self.collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.collectionView.backgroundColor = .systemGray
+        self.collectionView.backgroundColor = .white
         self.view.addSubview(self.collectionView)
         self.collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
         self.collectionView.register(UserCell.self, forCellWithReuseIdentifier: UserCell.reuseId)
@@ -95,7 +95,6 @@ class PeopleViewController: UIViewController {
         
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.shadowImage = UIImage()
-        
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -160,7 +159,7 @@ extension PeopleViewController {
             guard let section = Section(rawValue: indexPath.section) else { return nil }
             sectionHeader.configure(text: section.description(userCount: items.count),
                                     font: .avenir20(),
-                                    textColor: .magenta)
+                                    textColor: .systemBlue)
             return sectionHeader
 
         }
@@ -181,7 +180,6 @@ extension PeopleViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         reloadData(with: searchText)
-        print(searchText)
     }
     
 }

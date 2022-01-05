@@ -19,7 +19,7 @@ class UserCell: UICollectionViewCell, ConfiguringCell {
   
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .red
+        self.backgroundColor = .white
         setupConstraints()
     }
     
@@ -29,15 +29,15 @@ class UserCell: UICollectionViewCell, ConfiguringCell {
         userImageView.sd_setImage(with: url, completed: nil)
         userName.text = user.username
         
-        self.layer.shadowColor = UIColor.white.cgColor
-        self.layer.shadowRadius = 5
+        self.layer.shadowColor = UIColor.gray.cgColor
+        self.layer.shadowRadius = 15
         self.layer.shadowOffset = CGSize(width: 0, height: 4)
         self.layer.shadowOpacity = 0.5
     
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.containerView.layer.cornerRadius = 4
+        self.containerView.layer.cornerRadius = 15
         self.containerView.clipsToBounds = true
     }
     
