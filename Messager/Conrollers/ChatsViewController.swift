@@ -12,11 +12,7 @@ import InputBarAccessoryView
 import FirebaseFirestore
 
 class ChatsViewController: MessagesViewController {
-    
-    //    struct mySender: SenderType {
-    //        var senderId: String
-    //        var displayName: String
-    //    }
+
     // variables
     private var messageListener: ListenerRegistration?
     private var messages: [Message] = []

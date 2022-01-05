@@ -25,8 +25,6 @@ class ListViewController: UIViewController {
     }
     
     // variables
-
-    // fake data from json files
     var activeChats =  [MessageChat]()
     var waitingChats = [MessageChat]()
     // intanse of colllection view
@@ -57,7 +55,7 @@ class ListViewController: UIViewController {
 // view did load
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .lightGray
+        self.view.backgroundColor = .white
         setupSearchBar()
         setupCollectionView()
         createDataSource()
@@ -110,12 +108,11 @@ class ListViewController: UIViewController {
     private func setupCollectionView() {
         self.collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: createCompositionalLayout())
         self.collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.collectionView.backgroundColor = .systemGray
+        self.collectionView.backgroundColor = .clear
         self.view.addSubview(self.collectionView)
         self.collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
         self.collectionView.register(WaitingChatCell.self, forCellWithReuseIdentifier: WaitingChatCell.reuseId)
         self.collectionView.register(ActiveChatCell.self, forCellWithReuseIdentifier: ActiveChatCell.reuseId)
-        
         self.collectionView.delegate = self
     }
     
@@ -141,7 +138,7 @@ extension ListViewController {
             collectionView, kind, indexPath in
             guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseId, for: indexPath) as? SectionHeader else {return nil}
             guard let section = Section(rawValue: indexPath.section) else { return nil }
-            sectionHeader.configure(text: section.description(), font: .avenir26(), textColor: .magenta)
+            sectionHeader.configure(text: section.description(), font: .avenir26(), textColor: .systemBlue)
             return sectionHeader
                     
         }

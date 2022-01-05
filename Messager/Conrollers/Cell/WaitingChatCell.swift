@@ -27,7 +27,7 @@ class WaitingChatCell: UICollectionViewCell, ConfiguringCell {
     private func setupConstraints() {
         friendImageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(friendImageView)
-        NSLayoutConstraint.activate([
+        NSLayoutConstraint.activate([             
             self.friendImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
             self.friendImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
             self.friendImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),

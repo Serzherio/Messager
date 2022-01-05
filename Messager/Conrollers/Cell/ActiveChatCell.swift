@@ -17,7 +17,7 @@ class ActiveChatCell: UICollectionViewCell, ConfiguringCell {
     var friendImage = UIImageView()
     let friendNameLabel = UILabel(textLabel: "User")
     let lastMessageLabel = UILabel(textLabel: "How a u?")
-    let gradientView = GradientView(from: .topTrailing, to: .bottomLeading, startColor: .magenta, endColor: .green)
+    let gradientView = GradientView(from: .topTrailing, to: .bottomLeading, startColor: .magenta, endColor: .systemBlue)
     
     
     func configure<U>(with value: U) where U : Hashable {
@@ -25,15 +25,23 @@ class ActiveChatCell: UICollectionViewCell, ConfiguringCell {
         friendNameLabel.text = chat.friendUsername
         lastMessageLabel.text = chat.lastMessageContent
         friendImage.sd_setImage(with: URL(string: chat.friendUserImageString), completed: nil)
+        self.layer.shadowRadius = 15
+        self.layer.shadowOffset = CGSize(width: 4, height: 4)
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowColor = UIColor.gray.cgColor
+        self.layer.masksToBounds = false
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
         setupConstraints()
-        self.layer.cornerRadius = 4
-        self.clipsToBounds = true
-        
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.layer.cornerRadius = 15
+        self.clipsToBounds = false
     }
     
    
