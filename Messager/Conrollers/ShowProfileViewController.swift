@@ -33,18 +33,42 @@ class ShowProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        
         self.aboutMeLabel.numberOfLines = 0
-        self.containerView.backgroundColor = .gray
-        self.containerView.layer.cornerRadius = 30
-        
-      
+        self.containerView.backgroundColor = .lightGray
+        self.containerView.layer.cornerRadius = 50
         setupConstraints()
         
         if let button = textField.rightView as? UIButton  {
             button.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
         }
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        self.textField.delegate = self
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
+    
+    
+    
     
     @objc private func sendMessage() {
         guard let message = textField.text, message != "" else {return}
@@ -60,7 +84,7 @@ class ShowProfileViewController: UIViewController {
             } // createWaitingChats
         } // dismiss
     } // sendMessage
-
+    
 }
 
 extension ShowProfileViewController {
@@ -110,6 +134,15 @@ extension ShowProfileViewController {
     }
     
 }
+
+// MARK: - UITextFieldDelegate
+extension ShowProfileViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+           self.view.endEditing(true)
+           return false
+       }
+}
+
 
 // MARK: - SwiftUI provider for canvas
 import SwiftUI

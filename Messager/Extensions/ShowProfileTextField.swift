@@ -20,14 +20,14 @@ class ShowProfileTextField: UITextField {
         self.layer.cornerRadius = 18
         self.layer.masksToBounds = true
         
-        let image = UIImage(systemName: "smiley")
+        let image = UIImage(systemName: "")
         let imageView = UIImageView(image: image)
         self.leftView = imageView
         self.leftView?.frame = CGRect(x: 0, y: 0, width: 19, height: 19)
         self.leftViewMode = .always
         
         let button = UIButton(type: .system)
-        let imageButton = UIImage(named:"plusButton.pdf")
+        let imageButton = UIImage(systemName: "smiley")
         button.setImage(imageButton, for: .normal)
         self.rightView = button
         self.rightView?.frame = CGRect(x: 0, y: 0, width: 19, height: 19)

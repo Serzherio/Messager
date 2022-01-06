@@ -33,7 +33,7 @@ class ChatRequestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .gray
+        self.view.backgroundColor = .white
         setupConstraints()
         customiseElements()
         
@@ -56,8 +56,8 @@ class ChatRequestViewController: UIViewController {
     private func customiseElements() {
         self.denyButton.layer.borderWidth = 1.2
         self.denyButton.layer.borderColor = UIColor.red.cgColor
-        containerView.backgroundColor = .white
-        containerView.layer.cornerRadius = 30
+        containerView.backgroundColor = .lightGray
+        containerView.layer.cornerRadius = 50
     }
 }
 

@@ -99,6 +99,7 @@ extension AuthViewController: AuthNavigationDelegate {
     
 }
 
+
 // MARK: - SwiftUI provider for canvas
 import SwiftUI
 struct AuthVCProvider: PreviewProvider {

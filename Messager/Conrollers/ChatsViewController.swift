@@ -117,7 +117,7 @@ class ChatsViewController: MessagesViewController {
     }
     
     func configureSendButton() {
-        messageInputBar.sendButton.setImage(UIImage(named: "Sent"), for: .normal)
+        messageInputBar.sendButton.setImage(UIImage(systemName: "smiley"), for: .normal)
         messageInputBar.setRightStackViewWidthConstant(to: 56, animated: false)
         messageInputBar.sendButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 6, right: 30)
         messageInputBar.sendButton.setSize(CGSize(width: 48, height: 48), animated: false)
@@ -125,7 +125,7 @@ class ChatsViewController: MessagesViewController {
     }
     func configureCameraIcon() {
         let cameraItem = InputBarButtonItem(type: .system)
-        cameraItem.tintColor = .magenta
+        cameraItem.tintColor = .systemBlue
         let cameraImage = UIImage(systemName: "camera")
         cameraItem.image = cameraImage
         
@@ -224,11 +224,11 @@ extension ChatsViewController: MessagesLayoutDelegate {
 extension ChatsViewController: MessagesDisplayDelegate {
     
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return isFromCurrentSender(message: message) ? .yellow : .magenta
+        return isFromCurrentSender(message: message) ? .blue : .green
     }
     
     func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return isFromCurrentSender(message: message) ? .brown : .blue
+        return isFromCurrentSender(message: message) ? .white : .black
     }
     
     //    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {

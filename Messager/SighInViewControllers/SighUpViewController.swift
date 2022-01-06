@@ -40,6 +40,16 @@ class SighUpViewController: UIViewController {
         
         sighUpButton.addTarget(self, action: #selector(sighUpButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmPasswordTextField.delegate = self
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
 // sighUpButtonTapped
@@ -138,4 +148,12 @@ extension UIViewController {
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
+}
+
+// MARK: - UITextFieldDelegate
+extension SighUpViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+           self.view.endEditing(true)
+           return false
+       }
 }

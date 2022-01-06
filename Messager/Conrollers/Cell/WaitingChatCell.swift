@@ -24,6 +24,13 @@ class WaitingChatCell: UICollectionViewCell, ConfiguringCell {
         setupConstraints()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.layer.cornerRadius = 15
+        self.clipsToBounds = true
+        
+    }
+    
     private func setupConstraints() {
         friendImageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(friendImageView)
