@@ -42,9 +42,9 @@ class SighUpViewController: UIViewController {
         sighUpButton.addTarget(self, action: #selector(sighUpButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
-        confirmPasswordTextField.delegate = self
+//        emailTextField.delegate = self
+//        passwordTextField.delegate = self
+//        confirmPasswordTextField.delegate = self
         
         
     }

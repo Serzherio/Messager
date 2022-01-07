@@ -44,8 +44,8 @@ class LoginViewController: UIViewController {
         self.loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         self.signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
+//        emailTextField.delegate = self
+//        passwordTextField.delegate = self
     }
     
 
@@ -128,12 +128,12 @@ extension LoginViewController {
 }
 
 // MARK: - UITextFieldDelegate
-extension LoginViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-           self.view.endEditing(true)
-           return false
-       }
-}
+//extension LoginViewController: UITextFieldDelegate {
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//           self.view.endEditing(true)
+//           return false
+//       }
+//}
 
 
 // MARK: - SwiftUI provider for canvas

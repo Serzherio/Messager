@@ -34,41 +34,51 @@ class ShowProfileViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         self.aboutMeLabel.numberOfLines = 0
-        self.containerView.backgroundColor = .lightGray
+        self.containerView.backgroundColor = .white
         self.containerView.layer.cornerRadius = 50
+        self.containerView.layer.shadowRadius = 15
+        self.containerView.layer.shadowOffset = CGSize(width: 0, height: -5)
+        self.containerView.layer.shadowOpacity = 0.5
+        self.containerView.layer.shadowColor = UIColor.gray.cgColor
+        self.containerView.layer.masksToBounds = false
+        self.textField.layer.borderWidth = 1
+        self.textField.layer.borderColor = UIColor.systemGray.cgColor
+        self.textField.layer.shadowRadius = 5
+        self.textField.layer.shadowOffset = CGSize(width: 5, height: 5)
+        self.textField.layer.shadowOpacity = 0.5
+        self.textField.layer.shadowColor = UIColor.gray.cgColor
+        self.textField.layer.masksToBounds = false
+        
+        
         setupConstraints()
         
         if let button = textField.rightView as? UIButton  {
             button.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
         }
 
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        self.textField.delegate = self
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+//        self.textField.delegate = self
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
-    }
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
-    }
-    
-    
-    
-    
+//
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+//    }
+//
+//    @objc func keyboardWillShow(notification: NSNotification) {
+//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y == 0 {
+//                self.view.frame.origin.y -= keyboardSize.height
+//            }
+//        }
+//    }
+//    @objc func keyboardWillHide(notification: NSNotification) {
+//        if self.view.frame.origin.y != 0 {
+//            self.view.frame.origin.y = 0
+//        }
+//    }
     
     @objc private func sendMessage() {
         guard let message = textField.text, message != "" else {return}
@@ -103,10 +113,10 @@ extension ShowProfileViewController {
         self.containerView.addSubview(textField)
         
         NSLayoutConstraint.activate([
-            self.containerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.containerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 50),
             self.containerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             self.containerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.containerView.heightAnchor.constraint(equalToConstant: 200)
+            self.containerView.heightAnchor.constraint(equalToConstant: 250)
         ])
         NSLayoutConstraint.activate([
             self.imageView.topAnchor.constraint(equalTo: self.view.topAnchor),
@@ -136,12 +146,12 @@ extension ShowProfileViewController {
 }
 
 // MARK: - UITextFieldDelegate
-extension ShowProfileViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-           self.view.endEditing(true)
-           return false
-       }
-}
+//extension ShowProfileViewController: UITextFieldDelegate {
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//           self.view.endEditing(true)
+//           return false
+//       }
+//}
 
 
 // MARK: - SwiftUI provider for canvas

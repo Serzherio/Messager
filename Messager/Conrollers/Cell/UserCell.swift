@@ -30,7 +30,7 @@ class UserCell: UICollectionViewCell, ConfiguringCell {
         userName.text = user.username
         
         self.layer.shadowColor = UIColor.gray.cgColor
-        self.layer.shadowRadius = 15
+        self.layer.shadowRadius = 10
         self.layer.shadowOffset = CGSize(width: 0, height: 4)
         self.layer.shadowOpacity = 0.5
     
