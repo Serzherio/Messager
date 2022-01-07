@@ -18,12 +18,11 @@ class StorageServices {
 // singleton
     static let shared = StorageServices()
 
-// reference for avatar's folders in database
+// reference in database
     let storageRef = Storage.storage().reference()
     private var avatarsRef: StorageReference {
         return storageRef.child("Avatars")
     }
-
     private var chatsRef: StorageReference {
         return storageRef.child("chats")
     }
@@ -33,9 +32,12 @@ class StorageServices {
         return Auth.auth().currentUser!.uid
     }
     
-// upload func
+// функция загрузки фотографии аватара
+// принимает фото, блок выполнения
+// сжимает фото с помощью функции "scaledToSafeUploadSize"
+// по ссылке на хранилище аватаров по "currentUserID" сохраняет фото
+// в случае успеха возвращает ссылку на аватар пользователя
     func upload(photo: UIImage, completion: @escaping(Result<URL, Error>) -> Void) {
-        
         guard let scaledImage = photo.scaledToSafeUploadSize, let imageData = scaledImage.jpegData(compressionQuality: 0.4) else { return }
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpeg"
@@ -51,9 +53,14 @@ class StorageServices {
                 }
                 completion(.success(downloadURL))
             }
-        }
-    }
+        } //  avatarsRef.child
+    } // func
     
+// функция отправки фотографии в чат с пользователем
+// принимает фото, чат, блок выполнения
+// сжимает фото с помощью функции "scaledToSafeUploadSize"
+// по ссылке на чат сохраняет ссылку на фотографию
+// // в случае успеха возвращает ссылку на фотографию
     func uploadPhotoMessage(photo: UIImage, to chat: MessageChat, completion: @escaping(Result<URL, Error>) -> Void) {
         guard let scaledImage = photo.scaledToSafeUploadSize, let imageData = scaledImage.jpegData(compressionQuality: 1) else { return }
         let metaData = StorageMetadata()
@@ -71,10 +78,14 @@ class StorageServices {
                     return
                 }
                 completion(.success(downloadURL))
-            }
+            } // self.chatsRef.child
         }
-    }
+    } // func
     
+// функция скачивания изображения
+// принимает ссылку для скачивания и блок выполнения
+// по ссылке на хранилище с параметром размера скачивает изображение
+// в случае успеха возвращает изображение
     func downloadImage(url: URL, completion: @escaping(Result<UIImage?, Error>) -> Void) {
         let ref = Storage.storage().reference(forURL: url.absoluteString)
         let megaByte = Int64(10*1024*1024)
@@ -84,7 +95,7 @@ class StorageServices {
                 return
             }
             completion(.success(UIImage(data: imageData)))
-        }
-    }
+        } // ref.getData
+    } // func
     
-}
+} // class
