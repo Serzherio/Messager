@@ -14,21 +14,21 @@ import FirebaseAuth
  responsible for authorization exist users and registration new users
  */
 class AuthService {
-    
+
+// variables
+    private let auth = Auth.auth()
 // singleton
     static let shared = AuthService()
-    private let auth = Auth.auth()
 
 // login func takes email, password, and completion block with Result onboard
+// signIn exist users
+// in success case completion block takes exist user
+// in failure completion block takes error
     func login(email: String?, password: String?, completion: @escaping (Result <User,Error>) -> Void) {
-        
         guard let email = email, let password = password else {
             completion(.failure(AuthError.notFilled))
             return
         }
-// signIn exist users
-// in success case completion block takes exist user
-// in failure completion block takes error
         auth.signIn(withEmail: email, password: password) { (result, error) in
             guard let result = result else {
                 completion(.failure(error!))
@@ -44,7 +44,6 @@ class AuthService {
 // check matching password
 // check correct email
     func register(email: String?, password: String?, confirmPassword: String?, completion: @escaping (Result <User , Error>) -> Void) {
-
         guard Validators.isFilled(email: email, password: password, confirmPassword: confirmPassword) else {
             completion(.failure(AuthError.notFilled))
             return
