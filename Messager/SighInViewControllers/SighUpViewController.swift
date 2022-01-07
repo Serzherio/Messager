@@ -37,6 +37,7 @@ class SighUpViewController: UIViewController {
         self.loginButton.setTitle("Login", for: .normal)
         self.loginButton.setTitleColor(.red, for: .normal)
         self.setupConstrains()
+//        self.registerForKeyboarNotification()
         
         sighUpButton.addTarget(self, action: #selector(sighUpButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
@@ -44,13 +45,35 @@ class SighUpViewController: UIViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         confirmPasswordTextField.delegate = self
+        
+        
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
+// deinit VC
+//    deinit {
+//        self.removeKeyboardNotification()
+//    }
+    
+// for keyboard
+//    private func registerForKeyboarNotification() {
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+//    }
+//    private func removeKeyboardNotification() {
+//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+//    }
+//    @objc func keyboardWillShow(_ notification: Notification) {
+//        let userInfo = notification.userInfo
+//        let keyboardFrameSize = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+//        let diffInKeyboardAndSelectedTFSize =
+//        self.view.frame.origin.y -= keyboardFrameSize.height
+//    }
+//    @objc func keyboardWillHide() {
+//        self.view.frame.origin.y = 0
+//    }
+    
+    
 
 // sighUpButtonTapped
 // register new user
@@ -151,9 +174,9 @@ extension UIViewController {
 }
 
 // MARK: - UITextFieldDelegate
-extension SighUpViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-           self.view.endEditing(true)
-           return false
-       }
-}
+//extension SighUpViewController: UITextFieldDelegate {
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//           self.view.endEditing(true)
+//           return false
+//       }
+//}
