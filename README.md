@@ -4,14 +4,16 @@ Real-time chat
 Написан на UIKit, бекенд реализован на FireBase, чат выполнен с помощью MessageKit
 Интерфейс приложения реализован с помощью Compositional layout в связке с DiffableDataSource
 
-При первом запуске, пользователь попадает на экран авторизации
+При первом запуске, пользователь попадает на экран авторизации.
+
 <img src="https://github.com/Serzherio/Messager/blob/master/Screens/1.png" width="200" />
 
-У пользователя есть возможность зарегистрироваться в системе
+У пользователя есть возможность зарегистрироваться в системе.
+
 <img src="https://github.com/Serzherio/Messager/blob/master/Screens/2.png" width="200" />
 
+Либо залогиниться, при успешной регистрации ранее.
 
-Либо залогиниться, при успешной регистрации ранее
 <img src="https://github.com/Serzherio/Messager/blob/master/Screens/3.png" width="200" />
 
 
