@@ -4,8 +4,6 @@ Real-time chat
 Написан на UIKit, бекенд реализован на FireBase, чат выполнен с помощью MessageKit
 Интерфейс приложения реализован с помощью Compositional layout в связке с DiffableDataSource
 
-<img src="https://github.com/Serzherio/Pet-Pasport/blob/main/Screenshotes/1.PNG" width="300" />
-
 При первом запуске, пользователь попадает на экран авторизации
 <img src="https://github.com/Serzherio/Messager/blob/master/Screens/1.png" width="200" />
 
